@@ -60,7 +60,7 @@ prettier --single-quotes --trailing-comma es5 --print-width 80 --write "src/**/*
 
 Takođe, Prettier se može namestiti da se pokreće automatski pre svakog komita i za to postoji više načina opisanih na sajtu Prettier-a.
 
-Postoji paket `eslint-plugin-prettier` koji služi za integraciju Prettier-a i ESLint-a, tako da se ispravljanje koda po prettier pravilima može postići i komandom `eslint --fix`. Više o tome ima na sledećem [linku](https://github.com/prettier/eslint-plugin-prettier).
+Postoji paket `prettier-eslint` koji služi za integraciju Prettier-a i ESLint-a, tako da se ispravljanje koda po prettier pravilima može postići i komandom `eslint --fix`. Više o tome ima na sledećem [linku](https://github.com/prettier/eslint-plugin-prettier). Takoše, postoji i paket `eslint-plugin-prettier` koji služi da se prikažu greške koje treba Prettier da ispravi u ESLint proveri, više na sledećem [linku](https://github.com/prettier/eslint-plugin-prettier).
 
 # Opcije
 
