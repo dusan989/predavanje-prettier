@@ -26,11 +26,16 @@ Pomoću Prettier-a može da se definiše i lako kontroliše zajednički stil kod
 
 # Prettier i linter
 
-Važno je napoenuti da Prettier __nije__ alternativa linterima, već dopuna. Kod lintera (ESLint, TSLint) postoje 2 grupe pravila:
+Važno je napomenuti da Prettier __nije__ alternativa linterima, već dopuna. Kod lintera (ESLint, TSLint) postoje 2 grupe pravila:
 - _Formatting rules_, kao što su maksimalna dužina linije, mešanje spejsa i tabova itd. Ovde Prettier dolazi do izražaja jer automatski ispravlja greške ovog tipa.
 - _Code-quality rules_, kao što su neiskorišćene variable itd. Ovde Prettier ne pomaže i na programeru je da ispravi ove greške. Važno je napomenuti da ove greške mnogo više dovode do bagova u kodu od formaterskih.
 
 Postoje dodaci za ESLint, koji između ostalog isključuju neka ESLint pravila koja mogu da naprave problem Prettier-u.
+
+Važno je napomenuti, kada se koristi kombinacija eslint i Prettier, da može da dođe do kolizije nekih pravila. Recimo, u eslint-u je namešteno pravilo da moraju da se koriste samo jednostruki navodnici, dok u Prettieru samo dvostruki. U tim slučajevima mogu da se orade sledeće neke od sledećih predloga:
+
+- Da se isključe sva pravila u eslint-u koja mogu da naprave problem Prettier-u.
+- Da se promene opcije u Prettier-u tako da budu u skladu sa eslint-om.
 
 # Kako se instalira
 
@@ -55,7 +60,11 @@ prettier --single-quotes --trailing-comma es5 --print-width 80 --write "src/**/*
 
 Takođe, Prettier se može namestiti da se pokreće automatski pre svakog komita i za to postoji više načina opisanih na sajtu Prettier-a.
 
+Postoji paket `eslint-plugin-prettier` koji služi za integraciju Prettier-a i eslint-a, tako da se ispravljanje koda po prettier pravilima može postići i komandom `eslint --fix`. Više o tome ima na sledećem [linku](https://github.com/prettier/eslint-plugin-prettier).
+
 # Opcije
+
+Na stranici https://prettier.io/docs/en/options.html se nalazi spisak mogućih opcija kao i mogućih vrednosti datih opcija.
 
 Umesto da se opcije proselđuju kroz terminal, može se kreirati konfiguracioni fajl i to na više načina:
 - `.prettierrc` napisan kao YAML ili JSON sa opcionim ekstenzijama `.yaml/.yml/.json/.js`,
@@ -64,7 +73,15 @@ Umesto da se opcije proselđuju kroz terminal, može se kreirati konfiguracioni 
 
 Moguće je takođe promeniti postojeća pravila za određene grupe fajlova.
 
-# Editori
+## Primeri konfiguracionih fajlova
+
+- [React](https://github.com/facebook/react/blob/master/.prettierrc.js).
+
+# Primer kako da se uklone konflikti između eslint-a i Prettier-a
+
+Jedan od načina da se uklone konflikti je da se usključe eslint pravila koja mogu da su u suprotnosti sa Prettier-om. Postoji oficijalni paket `eslint-config-prettier` koji služi upravo za to, da onemogući pravila koja mogu da prave problem Prettier-u. To se postiže jednostavnim podešavanje eslint konfiguracionog fajla. Uz pomoć komande `eslint --print-config .eslintrc | eslint-config-prettier-check`se može proveriti dal određena pravila prave problem Prettier-u ili ne.
+
+# [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)
 
 Jedan od načina korišćenja Prettier-a je da se pokreće automatski prilikom svakog čuvanja fajla. To se može postići pomoću integracije Prettier-a i editora.
 
